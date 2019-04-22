@@ -1,3 +1,5 @@
+import random
+
 import time
 import Adafruit_GPIO.SPI as SPI
 import Adafruit_SSD1306
@@ -31,13 +33,18 @@ bottom = height-padding
 
 x = 0
 
-regular = ImageFont.truetype(font="BarlowCondensed-Regular", size=20, index=0 )
-light = ImageFont.truetype(font="BarlowCondensed-Light", size=10, index=0 )
+regular = ImageFont.truetype(font="BarlowCondensed-Regular.ttf", size=35, index=0 )
+light = ImageFont.truetype(font="BarlowCondensed-Light.ttf", size=15, index=0 )
+
+def rpmRead():
+	#testing only 
+	return random.randint(400, 6800)
 
 while True: 
-	draw.rectangle((0,0,width,height), outline=0, fill=0)
-	draw.text((x, top+25), "2.5k", font=regular, fill=255 )
-	draw.text((x+20, top+25), "rpm", font=light, fill=255 )
+	rpm = rpmRead()
+	draw.rectangle((0, 0, width, height), outline=0, fill=0)
+	draw.text((x, top), str(rpm), font=regular, fill=255 )
+	draw.text((x+100, top+15), "rpm", font=light, fill=255 )
 
 	disp.image(image)
 	disp.display()
