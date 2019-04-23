@@ -49,12 +49,15 @@ def rpmRead():
 		return 1
 	#random testing only return random.randint(400, 6800)
 
-while True: 
-	rpm = rpmRead()
-	draw.rectangle((0, 0, width, height), outline=0, fill=0)
-	draw.text((x, top), str(rpm), font=regular, fill=255 )
-	draw.text((x+100, top+15), "rpm", font=light, fill=255 )
+try:
+	while True: 
+		rpm = rpmRead()
+		draw.rectangle((0, 0, width, height), outline=0, fill=0)
+		draw.text((x, top), str(rpm), font=regular, fill=255 )
+		draw.text((x+100, top+15), "rpm", font=light, fill=255 )
 
-	disp.image(image)
-	disp.display()
-	time.sleep(.1)
+		disp.image(image)
+		disp.display()
+		time.sleep(.1)
+finally: 
+		draw.rectangle((0, 0, width, height), outline=0, fill=0)
