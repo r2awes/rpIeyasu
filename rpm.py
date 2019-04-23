@@ -38,12 +38,12 @@ x = 0
 regular = ImageFont.truetype(font="BarlowCondensed-Regular.ttf", size=35, index=0 )
 light = ImageFont.truetype(font="BarlowCondensed-Light.ttf", size=15, index=0 )
 
-GPIO.setmode(GPIO.BOARD)
+#GPIO.setmode(GPIO.BOARD)
 GPIO.setup(40, GPIO.IN)
 
 def rpmRead():
 	#testing read
-	if GPIO.Input(40) == 0:
+	if GPIO.input(40) == 0:
 		return 1
 	else:
 		return 0
