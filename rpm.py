@@ -1,5 +1,7 @@
 import random
 
+import RPi.GPIO as GPIO
+
 import time
 import Adafruit_GPIO.SPI as SPI
 import Adafruit_SSD1306
@@ -36,9 +38,17 @@ x = 0
 regular = ImageFont.truetype(font="BarlowCondensed-Regular.ttf", size=35, index=0 )
 light = ImageFont.truetype(font="BarlowCondensed-Light.ttf", size=15, index=0 )
 
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(40, GPIO.IN)
+
 def rpmRead():
-	#testing only 
-	return random.randint(400, 6800)
+	#random testing only return random.randint(400, 6800)
+	#testing read
+	try:
+		if GPIO.Input(40) == 0:
+			return 1
+		else:
+			return 0
 
 while True: 
 	rpm = rpmRead()
