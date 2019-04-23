@@ -39,14 +39,14 @@ regular = ImageFont.truetype(font="BarlowCondensed-Regular.ttf", size=35, index=
 light = ImageFont.truetype(font="BarlowCondensed-Light.ttf", size=15, index=0 )
 
 #GPIO.setmode(GPIO.BOARD)
-GPIO.setup(40, GPIO.IN)
+GPIO.setup(21, GPIO.IN)
 
 def rpmRead():
 	#testing read
-	if GPIO.input(40) == 0:
-		return 1
-	else:
+	if GPIO.input(21) == 0:
 		return 0
+	else:
+		return 1
 	#random testing only return random.randint(400, 6800)
 
 while True: 
