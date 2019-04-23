@@ -42,13 +42,12 @@ GPIO.setmode(GPIO.BOARD)
 GPIO.setup(40, GPIO.IN)
 
 def rpmRead():
-	#random testing only return random.randint(400, 6800)
 	#testing read
-	try:
-		if GPIO.Input(40) == 0:
-			return 1
-		else:
-			return 0
+	if GPIO.Input(40) == 0:
+		return 1
+	else:
+		return 0
+	#random testing only return random.randint(400, 6800)
 
 while True: 
 	rpm = rpmRead()
