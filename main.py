@@ -4,7 +4,7 @@ from threading import Thread
 from obd_capture import OBD_Capture
 from obd_sensors import SENSORS
 from obd_sensors import *
-
+from obd_io import OBDPort
 from render import Render
 
 def obd_connect(o):
@@ -46,3 +46,5 @@ class OBDConnection(object):
 			if self.c:
 				sensors = self.c.getSupportedSensorList()
 			return sensors
+
+	obd = OBDPort()
