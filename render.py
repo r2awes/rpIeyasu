@@ -13,29 +13,29 @@ from PIL import ImageFont
 
 class Render:
 	RST = None
-	#bus_number = 1
-	conn = False
-	debug = False
+	
 
-	def __init__(self, bus_number, title, text):
+	def __init__(self, bus_number):
 		self.debug = True
 		self.conn = False
-		self.title = title
-		self.text = text
-		
+		self.text = " "
+		self.title = " "
 		"""
 		self.disp = Adafruit_SSD1306.SSD1306_128_32(rst=Render.RST, i2c_bus=bus_number)
 		try:
 			self.disp.begin()
 		except IOError: 
 			print ("Check if the ports to see if the display on " + bus_number + " is connected properly")
-			conn = False
+			self.conn = False
 		"""
 		self.handle_debug(self.debug, self.conn)
 		
 	def handle_debug(self, debug, conn):
 		if( debug ):
 			self.log_text()
+
+		if( debug and conn ):
+			print("Check the connection to the ports for bus number " + self.bus_number +".")
 
 		if( conn ):
 			self.print_text()
@@ -73,6 +73,7 @@ class Render:
 		finally: 
 			draw.rectangle((0, 0, width, height), outline=0, fill=0)
 		"""
+
 	def update_text(self, text, title):
 		self.text = text
 		if( title != "" ):
