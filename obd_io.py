@@ -36,37 +36,36 @@ GET_DTC_COMMAND   = "03"
 CLEAR_DTC_COMMAND = "04"
 GET_FREEZE_DTC_COMMAND = "07"
 
-from debugEvent import debug_display
+#from debugEvent import debug_display
 
 #__________________________________________________________________________
 def decrypt_dtc_code(code):
-		"""Returns the 5-digit DTC code from hex encoding"""
-		dtc = []
-		current = code
-		for i in range(0,3):
-				if len(current)<4:
-						raise "Tried to decode bad DTC: %s" % code
+	"""Returns the 5-digit DTC code from hex encoding"""
+	dtc = []
+	current = code
+	for i in range(0,3):
+		if len(current)<4:
+			raise "Tried to decode bad DTC: %s" % code
+			tc = obd_sensors.hex_to_int(current[0]) #typecode
+			tc = tc >> 2
+			if   tc == 0:
+				type = "P"
+			elif tc == 1:
+				type = "C"
+			elif tc == 2:
+				type = "B"
+			elif tc == 3:
+				type = "U"
+			else:
+				raise tc
 
-				tc = obd_sensors.hex_to_int(current[0]) #typecode
-				tc = tc >> 2
-				if   tc == 0:
-						type = "P"
-				elif tc == 1:
-						type = "C"
-				elif tc == 2:
-						type = "B"
-				elif tc == 3:
-						type = "U"
-				else:
-						raise tc
-
-				dig1 = str(obd_sensors.hex_to_int(current[0]) & 3)
-				dig2 = str(obd_sensors.hex_to_int(current[1]))
-				dig3 = str(obd_sensors.hex_to_int(current[2]))
-				dig4 = str(obd_sensors.hex_to_int(current[3]))
-				dtc.append(type+dig1+dig2+dig3+dig4)
-				current = current[4:]
-		return dtc
+			dig1 = str(obd_sensors.hex_to_int(current[0]) & 3)
+			dig2 = str(obd_sensors.hex_to_int(current[1]))
+			dig3 = str(obd_sensors.hex_to_int(current[2]))
+			dig4 = str(obd_sensors.hex_to_int(current[3]))
+			dtc.append(type+dig1+dig2+dig3+dig4)
+			current = current[4:]
+	return dtc
 #__________________________________________________________________________
 
 class OBDPort:
@@ -95,8 +94,10 @@ class OBDPort:
 				self.State = 0
 				return None
 			
-			debug_display(self._notify_window, 1, "Interface successfully " + self.port.portstr + " opened")
-			debug_display(self._notify_window, 1, "Connecting to ECU...")
+			#debug_display(self._notify_window, 1, "Interface successfully " + self.port.portstr + " opened")
+			#debug_display(self._notify_window, 1, "Connecting to ECU...")
+			print("Interface successfully " + self.port.portstr + " opened")
+			print("Connecting to ECU...")
 				
 			try:
 				self.send_command("atz")   # initialize
@@ -156,7 +157,7 @@ class OBDPort:
 			# 9 seems to be the length of the shortest valid response
 			if len(code) < 7:
 				#raise Exception("BogusCode")
-				print "boguscode?"+code
+				print("boguscode?"+code)
 				
 			# get the first thing returned, echo should be off
 			code = string.split(code, "\r")
@@ -185,7 +186,7 @@ class OBDPort:
 					if len(c) == 0:
 						if(repeat_count == 5):
 							break
-						print "Got nothing\n"
+						print("Got nothing\n")
 						repeat_count = repeat_count + 1
 						continue
 									
@@ -203,7 +204,8 @@ class OBDPort:
 					return None
 				return buffer
 			else:
-				debug_display(self._notify_window, 3, "NO self.port!")
+				#debug_display(self._notify_window, 3, "NO self.port!")
+				print("No self.port!")
 			return None
 
 		# get sensor value from command
