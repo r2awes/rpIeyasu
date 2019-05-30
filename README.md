@@ -24,3 +24,9 @@ A digital dash built with a Raspberry Pi Zero W, 3 i2c oled displays, a ramshack
 * Fuel Reader
 	* READ
 	* GND
+
+##Notes
+
+Must use a version with debian with a desktop, otherwise no bluetooth connections.
+
+Also uses Adafruit's Adafruit_SSD1306 python library, so make sure that is installed properly.

@@ -2,32 +2,32 @@ import time
 
 """
 Uncomment to use I2C OLEDs that work with Adafruit's SSD1306 package
-
+"""
 import Adafruit_GPIO.SPI as SPI
 import Adafruit_SSD1306
 
 from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
-"""
+
 
 class Render:
 	RST = None
 	
-
 	def __init__(self, bus_number):
 		self.debug = True
-		self.conn = False
+		self.conn = True
 		self.text = " "
 		self.title = " "
-		"""
+		self.bus_number = bus_number
 		self.disp = Adafruit_SSD1306.SSD1306_128_32(rst=Render.RST, i2c_bus=bus_number)
+		
 		try:
 			self.disp.begin()
 		except IOError: 
-			print ("Check if the ports to see if the display on " + bus_number + " is connected properly")
+			print ("Check if the ports to see if the display on " + str(bus_number) + " is connected properly")
 			self.conn = False
-		"""
+		
 		self.handle_debug(self.debug, self.conn)
 		
 	def handle_debug(self, debug, conn):
@@ -35,7 +35,7 @@ class Render:
 			self.log_text()
 
 		if( debug and conn ):
-			print("Check the connection to the ports for bus number " + self.bus_number +".")
+			print("Check the connection to the ports for bus number " + (self.bus_number) +".")
 
 		if( conn ):
 			self.print_text()
@@ -44,7 +44,7 @@ class Render:
 		print self.text + " " + self.title
 
 	def print_text(self):
-		"""
+		
 		self.disp.clear()
 		self.disp.display()
 
@@ -72,7 +72,7 @@ class Render:
 			time.sleep(.1)
 		finally: 
 			draw.rectangle((0, 0, width, height), outline=0, fill=0)
-		"""
+		
 
 	def update_text(self, text, title):
 		self.text = text
