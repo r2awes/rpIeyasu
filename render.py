@@ -35,7 +35,7 @@ class Render:
 			self.log_text()
 
 		if( debug and conn ):
-			print("Check the connection to the ports for bus number " + (self.bus_number) +".")
+			print("Check the connection to the ports for bus number " + str(self.bus_number) +".")
 
 		if( conn ):
 			self.print_text()
