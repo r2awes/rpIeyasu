@@ -3,9 +3,7 @@ import RPi.GPIO as GPIO
 
 GPIO.setmode(GPIO.BCM)
 
-av = GPIO.input(21)
-if( av == 0 ):
-	GPIO.setup( 21, GPIO.OUT, initial=GPIO.HIGH )
+GPIO.setup( 21, GPIO.OUT, initial=GPIO.HIGH )
 
 a = Render(4)
 b = Render(3)
