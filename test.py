@@ -1,3 +1,5 @@
+#! /usr/bin/env python
+
 from render import Render
 import time
 import RPi.GPIO as GPIO
