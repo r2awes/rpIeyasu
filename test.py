@@ -1,4 +1,5 @@
 from render import Render
+import time
 import RPi.GPIO as GPIO
 
 GPIO.setmode(GPIO.BCM)
@@ -14,6 +15,7 @@ try:
 		a.update_text("Display ", "4")
 		b.update_text("Display ", "3")
 		c.update_text("Display ", "1")
+		time.sleep(5)
 except KeyboardInterrupt:
 		a.clear()
 		b.clear()
