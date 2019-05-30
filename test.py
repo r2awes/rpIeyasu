@@ -1,6 +1,7 @@
 from render import Render
 import RPi.GPIO as GPIO
 
+GPIO.setmode(GPIO.BCM)
 GPIO.setup( 21, GPIO.OUT, initial=GPIO.HIGH )
 
 a = Render(4)
