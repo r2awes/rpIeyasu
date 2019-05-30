@@ -15,7 +15,7 @@ class Render:
 	RST = None
 	
 	def __init__(self, bus_number):
-		self.debug = True
+		self.debug = False
 		self.conn = True
 		self.text = " "
 		self.title = " "
@@ -34,7 +34,7 @@ class Render:
 		if( debug ):
 			self.log_text()
 
-		if( debug and conn ):
+		if( debug and conn == False ):
 			print("Check the connection to the ports for bus number " + str(self.bus_number) +".")
 
 		if( conn ):
