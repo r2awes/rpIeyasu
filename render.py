@@ -72,9 +72,9 @@ class Render:
 			print "We goofy boiz!"
 
 	def update_text(self, text, title):
+		text = self.is_long(text)
 		if( self.is_new(text) ):
 			self.text = text
-			self.is_long()
 			if( title != "" ):
 				self.title = title
 			if( text == "clear" ):
@@ -93,7 +93,7 @@ class Render:
 		print(self.text == text)
 		return self.text != text
 
-	def is_long(self):
-		if(len(self.text) > 5):
-			self.text = self.text[:5] + "..."
+	def is_long(self, text):
+		if(len(text) > 5):
 			print "is_long"
+			return text[:5] + "..."
