@@ -25,6 +25,6 @@ try:
 		con = field < 8000
 		time.sleep(.1)
 except KeyboardInterrupt:
-		a.clear()
-		b.clear()
-		c.clear()
+		l.clear()
+		m.clear()
+		r.clear()
