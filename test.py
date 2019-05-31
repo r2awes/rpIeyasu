@@ -24,8 +24,11 @@ try:
 		r.update_text( "Walk It Like I Talk It", "Migos" )
 		f1 = grow( f1, 10 )
 		f2 = grow( f2, 100 )
-		con = f1 < 8000
+		con = f2 < 8000
 		time.sleep(.1)
+	l.clear()
+	m.clear()
+	r.clear()
 except KeyboardInterrupt:
 		l.clear()
 		m.clear()
