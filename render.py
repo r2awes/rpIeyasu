@@ -52,7 +52,7 @@ class Render:
 		height = self.disp.height
 		image = Image.new('1', (width, height))
 		draw = ImageDraw.Draw(image)
-		draw.rectangle((0,0,width,height), outline=0, fill=0)
+		#draw.rectangle((0,0,width,height), outline=0, fill=0)
 		padding = -2
 		top = padding
 		#bottom = height-padding
@@ -63,16 +63,12 @@ class Render:
 		light = ImageFont.truetype(font="BarlowCondensed-Light.ttf", size=15, index=0 )
 		
 		try:
-			draw.rectangle((0, 0, width, height), outline=0, fill=0)
+			#draw.rectangle((0, 0, width, height), outline=0, fill=0)
 			draw.text((x, top), self.text, font=regular, fill=255 )
 			draw.text((x+100, top+15), self.title, font=light, fill=255 )
 
 			self.disp.image(image)
 			self.disp.display()
-			time.sleep(.1)
-		finally: 
-			draw.rectangle((0, 0, width, height), outline=0, fill=0)
-		
 
 	def update_text(self, text, title):
 		self.text = text
