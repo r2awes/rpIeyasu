@@ -72,9 +72,9 @@ class Render:
 			print "We goofy boiz!"
 
 	def update_text(self, text, title):
-		text = self.is_long(text)
-		if( self.is_new(text) ):
-			self.text = text
+		nt = self.is_long(text)
+		if( self.is_new(nt) ):
+			self.text = nt
 			if( title != "" ):
 				self.title = title
 			if( text == "clear" ):
