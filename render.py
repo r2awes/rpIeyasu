@@ -90,8 +90,10 @@ class Render:
 		self.update_text("clear", "")
 		
 	def is_new(self, text):
+		print(self.text == text)
 		return self.text == text
 
 	def is_long(self):
 		if(len(self.text) > 5):
 			self.text = self.text[:5] + "..."
+			print "is_long"
