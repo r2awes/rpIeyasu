@@ -72,18 +72,26 @@ class Render:
 			print "We goofy boiz!"
 
 	def update_text(self, text, title):
-		self.text = text
-		if( title != "" ):
-			self.title = title
-		if( text == "clear" ):
-			self.title = ""
-			self.text = ""
+		if( self.is_new(text) ):
+			self.text = text
+			self.is_long()
+			if( title != "" ):
+				self.title = title
+			if( text == "clear" ):
+				self.title = ""
+				self.text = ""
+			if(self.conn):
+				self.print_text()
 
 		if(self.debug):
 			self.log_text()
-		if(self.conn):
-			self.print_text()
 
 	def clear(self):
 		self.update_text("clear", "")
 		
+	def is_new(self, text):
+		return self.text == text
+
+	def is_long(self):
+		if(len(self.text) > 5):
+			self.text = self.text[:5] + "..."

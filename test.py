@@ -11,18 +11,20 @@ l = Render(4)
 m = Render(3)
 r = Render(1)
 
-def grow( num ):
-	return num + 100
+def grow( num, ite ):
+	return num + ite
 
 con = True
-field = 0
+f1 = 0
+f2 = 0
 try:
 	while con:
-		l.update_text( str(field), "L" )
-		m.update_text( str(field), "M" )
-		r.update_text( str(field), "R" )
-		field = grow( field )
-		con = field < 8000
+		l.update_text( str(f1), "mph" )
+		m.update_text( str(f2), "rpm" )
+		r.update_text( "Walk It Like I Talk It", "Migos" )
+		f1 = grow( f1, 10 )
+		f2 = grow( f2, 100 )
+		con = f1 < 8000
 		time.sleep(.1)
 except KeyboardInterrupt:
 		l.clear()
