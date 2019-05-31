@@ -66,9 +66,10 @@ class Render:
 			#draw.rectangle((0, 0, width, height), outline=0, fill=0)
 			draw.text((x, top), self.text, font=regular, fill=255 )
 			draw.text((x+100, top+15), self.title, font=light, fill=255 )
-
 			self.disp.image(image)
 			self.disp.display()
+		except KeyboardInterrupt:
+			print "We goofy boiz!"
 
 	def update_text(self, text, title):
 		self.text = text
